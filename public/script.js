@@ -26,6 +26,11 @@ function formatBoolean(value) {
   return value ? 'Yes' : 'No';
 }
 
+const apiBaseUrl =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:3000'
+    : `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}`;
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -39,7 +44,7 @@ form.addEventListener('submit', async (event) => {
   resetState();
 
   try {
-    const response = await fetch('/api/classify-number?number=' + encodeURIComponent(value));
+    const response = await fetch(`${apiBaseUrl}/api/classify-number?number=${encodeURIComponent(value)}`);
     const data = await response.json();
 
     if (!response.ok || data.error) {
@@ -69,6 +74,6 @@ form.addEventListener('submit', async (event) => {
       propertiesContainer.appendChild(fallback);
     }
   } catch (error) {
-    showError('Unable to connect to the API. Make sure the server is running on port 3000.');
+    showError('Unable to connect to the API. Please check the backend service on Render.');
   }
 });
