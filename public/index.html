@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Classifier</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="card">
+        <p class="eyebrow">Fun-fact API</p>
+        <h1>Number Classifier</h1>
+
+        <form id="number-form" class="number-form">
+          <label for="number-input">Enter a whole number</label>
+          <div class="input-row">
+            <input
+              id="number-input"
+              name="number"
+              type="number"
+              step="1"
+              min="-999999"
+              placeholder="e.g. 42"
+              value="42"
+              required
+            />
+            <button type="submit">Classify</button>
+          </div>
+        </form>
+
+        <div id="result" class="result hidden">
+          <div class="fact-box">
+            <span class="label">Fun Fact</span>
+            <p id="fun-fact"> </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span>Number</span>
+              <strong id="number-value">-</strong>
+            </div>
+            <div class="stat-box">
+              <span>Digit Sum</span>
+              <strong id="digit-sum">-</strong>
+            </div>
+            <div class="stat-box">
+              <span>Prime</span>
+              <strong id="is-prime">-</strong>
+            </div>
+            <div class="stat-box">
+              <span>Perfect</span>
+              <strong id="is-perfect">-</strong>
+            </div>
+          </div>
+
+          <div class="tags-wrap">
+            <span class="label">Properties</span>
+            <div id="properties" class="tags"></div>
+          </div>
+        </div>
+
+        <p id="error-message" class="error-message hidden"></p>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

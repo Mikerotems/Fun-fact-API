@@ -2,20 +2,22 @@ const dotenv = require("dotenv")
 dotenv.config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
-
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
+const publicDir = path.join(__dirname, 'public');
 
+// Serve static frontend files
+app.use(express.static(publicDir));
 
-// Home route
 app.get('/', (req, res) => {
-    res.send('Number Classification API is running');
+    res.sendFile(path.join(publicDir, 'index.html'));
 });
 
 
